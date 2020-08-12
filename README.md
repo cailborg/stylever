@@ -1,3 +1,5 @@
+<img src="https://cailborg.github.io/stylever.png" alt="logo"/>
+
 ## Stylever
 
 > A starter kit for building sharable React UI libraries
