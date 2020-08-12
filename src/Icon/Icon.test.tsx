@@ -1,8 +1,8 @@
 import React from "react";
-import { TestComponent } from "./TestComponent";
+import { Icon } from "./Icon";
 import renderer from "react-test-renderer";
 
 it("renders correctly", () => {
-  const tree = renderer.create(<TestComponent text="Some text" />).toJSON();
+  const tree = renderer.create(<Icon name="alert" />).toJSON();
   expect(tree).toMatchSnapshot();
 });

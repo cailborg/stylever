@@ -127,11 +127,11 @@ function xmlToJson(xml) {
   } else if (xml.nodeType == 3) {
     obj = xml.nodeValue;
   }
-  var textNodes = [].slice.call(xml.childNodes).filter(function(node) {
+  var textNodes = [].slice.call(xml.childNodes).filter(function (node) {
     return node.nodeType === 3;
   });
   if (xml.hasChildNodes() && xml.childNodes.length === textNodes.length) {
-    obj = [].slice.call(xml.childNodes).reduce(function(text, node) {
+    obj = [].slice.call(xml.childNodes).reduce(function (text, node) {
       return text + node.nodeValue;
     }, "");
   } else if (xml.hasChildNodes()) {
@@ -183,7 +183,6 @@ async function imageURL(id) {
 
     const file = await response.json();
     const icons = file.document.children[2].children[0].children;
-    console.log(icons, "icons");
     let store = {};
     for (const icon of icons) {
       let result = await imageURL(icon.id);
@@ -196,10 +195,11 @@ async function imageURL(id) {
       );
       let resultJSON = await xmlToJson(nodeXML);
       let path = resultJSON.svg.path.attributes.d;
+      console.log(icon.name, path);
       store[icon.name] = { title: icon.name, drawn: path };
     }
     fs.writeFileSync(
-      "src/components/Icon/iconsConfig.json",
+      "src/Icon/iconsConfig.json",
       JSON.stringify(store, null, 2),
       (err) => {
         if (err) throw err;
