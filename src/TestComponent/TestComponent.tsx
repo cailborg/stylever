@@ -1,11 +1,9 @@
 import React from "react";
 
-interface TestComponentProps {
+export interface TestComponentProps {
   text: string;
 }
 
-const TestComponent: React.FC<TestComponentProps> = ({ text }) => (
+export const TestComponent: React.FC<TestComponentProps> = ({ text }) => (
   <div>{text}</div>
 );
-
-export default TestComponent;
