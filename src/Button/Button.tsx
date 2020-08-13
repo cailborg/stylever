@@ -1,10 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { Icon } from "../Icon/Icon";
 import { theme } from "../theme";
 import { useFocusRing } from "@react-aria/focus";
-
-type ChildrenType = ReactNode | React.ReactElement<typeof Icon>;
 
 export interface ButtonProps {
   trackingId?: string;
@@ -12,13 +9,18 @@ export interface ButtonProps {
   type?: "button" | "submit";
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  children: ChildrenType;
+  children: ReactNode;
 }
 
 const BaseButton = styled.button<ButtonProps>`
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: ${(props) =>
-    props.variant === "primary" || "strong"
+    props.variant === "primary"
+      ? theme.color("neutral", 0)
+      : props.variant === "strong"
       ? theme.color("neutral", 0)
       : theme.color("neutral", 9)};
   background: ${(props) =>
@@ -28,13 +30,24 @@ const BaseButton = styled.button<ButtonProps>`
       ? theme.color("neutral", 9)
       : theme.color("red", 3)};
   border: none;
-  padding: ${theme.space("xs")} ${theme.space("m")};
+  padding: ${(props) =>
+    props.variant === "primary"
+      ? theme.space("xs")
+      : props.variant === "secondary"
+      ? theme.space("xs")
+      : theme.space("xxs")};
   text-align: center;
   border-radius: ${theme.radius("s")};
   transition: all ease-in-out ${theme.duration("quick")};
   cursor: pointer;
   &:focus {
     outline: none;
+  }
+  & > :first-child {
+    margin-right: none;
+  }
+  & > :first-child:not(svg) {
+    margin-right: ${theme.space("xxxs")};
   }
 `;
 
