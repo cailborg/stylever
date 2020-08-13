@@ -10,7 +10,6 @@
   "author": "Cail Borg",
   "license": "MIT",
   "dependencies": {
-    "@csstools/normalize.css": "^10.1.0",
     "@react-aria/focus": "^3.1.0"
   },
   "devDependencies": {

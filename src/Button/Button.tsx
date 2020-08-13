@@ -17,6 +17,7 @@ const BaseButton = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Roboto", sans-serif;
   color: ${(props) =>
     props.variant === "primary"
       ? theme.color("neutral", 0)
@@ -27,8 +28,8 @@ const BaseButton = styled.button<ButtonProps>`
     props.variant === "primary"
       ? theme.color("purple", 9)
       : props.variant === "strong"
-      ? theme.color("neutral", 9)
-      : theme.color("red", 3)};
+      ? theme.color("red", 9)
+      : theme.color("neutral", 0)};
   border: none;
   padding: ${(props) =>
     props.variant === "primary"
