@@ -1,7 +1,8 @@
 {
-  "name": "stylever",
-  "version": "1.0.0",
+  "name": "@cailborg/stylever",
+  "version": "1.0.1",
   "description": "A starter kit for building React UI Libraries",
+  "repository": "https://github.com/cailborg/stylever",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -15,6 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@storybook/addon-actions": "^6.0.3",
     "@storybook/addon-essentials": "^6.0.3",
@@ -37,6 +39,7 @@
     "react-is": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "rollup": "^2.23.1",
+    "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-postcss": "^3.1.5",
     "rollup-plugin-typescript2": "^0.27.2",
