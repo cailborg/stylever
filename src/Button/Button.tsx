@@ -1,7 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
+import { Icon, IconDisplayName } from "../Icon/Icon";
 import { theme } from "../theme";
 import { useFocusRing } from "@react-aria/focus";
+
+type StringOrIcon = string | React.ReactElement<typeof Icon>;
+
+type ChildrenType = StringOrIcon | StringOrIcon[];
 
 export interface ButtonProps {
   trackingId?: string;
@@ -9,46 +14,83 @@ export interface ButtonProps {
   type?: "button" | "submit";
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  children: ReactNode;
+  children: ChildrenType;
 }
+
+const isChildIconOnly = (children: ChildrenType) => {
+  if (React.Children.count(children) === 1) {
+    const child = React.Children.toArray(children)[0] as React.ReactElement;
+
+    const childType = child?.type as React.FC;
+
+    return (
+      childType?.displayName === IconDisplayName || childType?.name === "Icon"
+    );
+  }
+
+  return false;
+};
 
 const BaseButton = styled.button<ButtonProps>`
   box-sizing: border-box;
+  max-width: ${(props) =>
+    isChildIconOnly(props.children) ? "min-content" : "100%"};
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Roboto", sans-serif;
   color: ${(props) =>
     props.variant === "primary"
-      ? theme.color("neutral", 0)
+      ? theme.color("Neutral", 0)
       : props.variant === "strong"
-      ? theme.color("neutral", 0)
-      : theme.color("neutral", 9)};
+      ? theme.color("Neutral", 0)
+      : theme.color("Neutral", 9)};
   background: ${(props) =>
     props.variant === "primary"
-      ? theme.color("purple", 9)
+      ? theme.color("Primary", 7)
       : props.variant === "strong"
-      ? theme.color("red", 9)
-      : theme.color("neutral", 0)};
+      ? theme.color("Secondary", 7)
+      : theme.color("Neutral", 1)};
   border: none;
-  padding: ${(props) =>
+  padding: 0px
+    ${(props) =>
+      props.variant === "primary"
+        ? theme.space("xs")
+        : props.variant === "secondary"
+        ? theme.space("xs")
+        : theme.space("xxs")};
+  height: ${(props) =>
     props.variant === "primary"
-      ? theme.space("xs")
+      ? theme.space("xl")
       : props.variant === "secondary"
-      ? theme.space("xs")
-      : theme.space("xxs")};
+      ? theme.space("xl")
+      : theme.space("m")};
   text-align: center;
   border-radius: ${theme.radius("s")};
   transition: all ease-in-out ${theme.duration("quick")};
   cursor: pointer;
+  &:hover {
+    background: ${(props) =>
+      props.variant === "primary"
+        ? theme.color("Primary", 6)
+        : props.variant === "strong"
+        ? theme.color("Secondary", 6)
+        : theme.color("Neutral", 0)};
+  }
+  &:active {
+    background: ${(props) =>
+      props.variant === "primary"
+        ? theme.color("Primary", 9)
+        : props.variant === "strong"
+        ? theme.color("Secondary", 9)
+        : theme.color("Neutral", 3)};
+  }
   &:focus {
     outline: none;
   }
   & > :first-child {
-    margin-right: none;
-  }
-  & > :first-child:not(svg) {
-    margin-right: ${theme.space("xxxs")};
+    margin-left: ${(props) =>
+      isChildIconOnly(props.children) ? "0px" : theme.space("xxxs")};
   }
 `;
 

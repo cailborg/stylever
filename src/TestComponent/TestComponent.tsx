@@ -7,15 +7,14 @@ export interface TestComponentProps {
 }
 
 const StyledDiv = styled.div`
-  color: ${theme.color("purple", 0)};
-  background: ${theme.color("red", 9)};
-  border: 1px solid black;
+  color: ${theme.color("Primary", 9)};
+  background: ${theme.color("Tertiary", 9)};
+  border: ${theme.borderWidth("thick")} ${theme.borderStyle("dotted")};
+  ${theme.color("Neutral", 9)};
   padding: ${theme.space("m")};
   width: ${theme.size("m")};
   text-align: center;
   border-radius: ${theme.radius("m")};
-  border-width: ${theme.borderWidth("thick")};
-  border-style: ${theme.borderStyle("dotted")};
   box-shadow: ${theme.shadow("medium")};
   animation-duration: ${theme.duration("quick")};
   z-index: ${theme.zIndex("auto")};

@@ -158,7 +158,7 @@ const extractStyleProperties = (layer) => {
       nonFigmaDefinedStyleProperties
     );
 
-    // console.log(theme);
+    console.log(theme);
 
     fs.writeFileSync("src/theme/tokens.json", JSON.stringify(theme));
 

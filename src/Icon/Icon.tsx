@@ -3,6 +3,8 @@ import styled from "styled-components";
 import data from "./iconsConfig.json";
 import { theme, Theme, ColorIndex } from "../theme";
 
+export const IconDisplayName = "Icon";
+
 export interface IconProps {
   name: keyof typeof data;
   color?: keyof Theme["colors"];
@@ -17,7 +19,7 @@ const getIconConfig = (name: keyof typeof data) => {
 
 export const Icon: React.FC<IconProps> = ({
   name,
-  color = "neutral",
+  color = "Neutral",
   index,
 }) => {
   const StyledSVG = styled.svg`

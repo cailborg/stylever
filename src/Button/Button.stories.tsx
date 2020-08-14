@@ -21,8 +21,8 @@ Standard.args = {
 export const TextWithicon = () => {
   return (
     <Button variant="default">
-      <span>Some button text</span>
-      <Icon name="alert" color="neutral" index={9} />
+      Some button text
+      <Icon name="alert" color="Neutral" index={9} />
     </Button>
   );
 };
@@ -30,7 +30,7 @@ export const TextWithicon = () => {
 export const IconOnly = () => {
   return (
     <Button variant="default">
-      <Icon name="alert" color="neutral" index={9} />
+      <Icon name="alert" color="Neutral" index={9} />
     </Button>
   );
 };
