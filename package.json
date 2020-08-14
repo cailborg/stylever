@@ -2,7 +2,10 @@
   "name": "@cailborg/stylever",
   "version": "1.0.1",
   "description": "A starter kit for building React UI Libraries",
-  "repository": "https://github.com/cailborg/stylever",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cailborg/stylever.git"
+  },
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
@@ -60,5 +63,13 @@
     "test:watch": "jest --watch",
     "figma:tokens": "node scripts/getFigmaTokens.js",
     "figma:icons": "node scripts/getFigmaIcons.js"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/cailborg/stylever/issues"
+  },
+  "homepage": "https://github.com/cailborg/stylever#readme",
+  "keywords": [
+    "Design",
+    "System"
+  ]
 }
