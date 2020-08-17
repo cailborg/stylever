@@ -51,6 +51,8 @@ const BaseButton = styled.button<ButtonProps>`
       ? theme.color("Primary", 7)
       : props.variant === "strong"
       ? theme.color("Secondary", 7)
+      : props.variant === "weak"
+      ? theme.color("Neutral", 0)
       : theme.color("Neutral", 2)};
   border: none;
   padding: 0px
