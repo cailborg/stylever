@@ -9,6 +9,7 @@ export interface IconProps {
   name: keyof typeof data;
   color?: keyof Theme["colors"];
   index?: ColorIndex;
+  label?: string;
 }
 
 const getIconConfig = (name: keyof typeof data) => {
@@ -20,6 +21,7 @@ const getIconConfig = (name: keyof typeof data) => {
 export const Icon: React.FC<IconProps> = ({
   name,
   color = "Neutral",
+  label,
   index,
 }) => {
   const StyledSVG = styled.svg`
@@ -34,7 +36,7 @@ export const Icon: React.FC<IconProps> = ({
       viewBox="0 0 24 24"
       role="img"
     >
-      <title>{values.title}</title>
+      <title>{label ? label : values.title}</title>
       <path d={values.drawn} fillRule="evenodd" clipRule="evenodd" />
     </StyledSVG>
   );

@@ -18,19 +18,36 @@ Standard.args = {
   children: "Button text",
 };
 
-export const TextWithicon = () => {
+export const DefaultWithicon = () => {
   return (
     <Button variant="default">
       Some button text
-      <Icon name="alert" color="Neutral" index={9} />
+      <Icon name="Chevron Down" color="Neutral" index={9} />
     </Button>
   );
 };
 
-export const IconOnly = () => {
+export const SeondaryWithicon = () => {
+  return (
+    <Button variant="secondary">
+      Some button text
+      <Icon name="Chevron Down" color="Neutral" index={9} />
+    </Button>
+  );
+};
+
+export const DefaultIconOnly = () => {
   return (
     <Button variant="default">
-      <Icon name="alert" color="Neutral" index={9} />
+      <Icon name="Cross" color="Neutral" index={9} />
+    </Button>
+  );
+};
+
+export const SecondaryIconOnly = () => {
+  return (
+    <Button variant="secondary">
+      <Icon name="Cross" color="Neutral" index={9} />
     </Button>
   );
 };

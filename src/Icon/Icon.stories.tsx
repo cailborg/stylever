@@ -15,6 +15,6 @@ const Template: Story<IconProps> = (args) => <Icon {...args} />;
 
 export const Standard = Template.bind({});
 Standard.args = {
-  name: "alert",
-  index: 4,
+  name: "Cross",
+  index: 9,
 };

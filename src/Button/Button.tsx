@@ -15,6 +15,7 @@ export interface ButtonProps {
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   children: ChildrenType;
+  ariaLabel?: string;
 }
 
 const isChildIconOnly = (children: ChildrenType) => {
@@ -50,14 +51,18 @@ const BaseButton = styled.button<ButtonProps>`
       ? theme.color("Primary", 7)
       : props.variant === "strong"
       ? theme.color("Secondary", 7)
-      : theme.color("Neutral", 1)};
+      : theme.color("Neutral", 2)};
   border: none;
   padding: 0px
     ${(props) =>
       props.variant === "primary"
         ? theme.space("xs")
         : props.variant === "secondary"
-        ? theme.space("xs")
+        ? isChildIconOnly(props.children)
+          ? theme.space("xxs")
+          : theme.space("xs")
+        : isChildIconOnly(props.children)
+        ? theme.space("tiny")
         : theme.space("xxs")};
   height: ${(props) =>
     props.variant === "primary"
@@ -75,7 +80,7 @@ const BaseButton = styled.button<ButtonProps>`
         ? theme.color("Primary", 6)
         : props.variant === "strong"
         ? theme.color("Secondary", 6)
-        : theme.color("Neutral", 0)};
+        : theme.color("Neutral", 1)};
   }
   &:active {
     background: ${(props) =>
@@ -85,12 +90,20 @@ const BaseButton = styled.button<ButtonProps>`
         ? theme.color("Secondary", 9)
         : theme.color("Neutral", 3)};
   }
+  &:disabled {
+    background: ${theme.color("Neutral", 1)};
+    color: ${theme.color("Neutral", 5)};
+    cursor: not-allowed;
+  }
   &:focus {
     outline: none;
   }
   & > :first-child {
     margin-left: ${(props) =>
       isChildIconOnly(props.children) ? "0px" : theme.space("xxxs")};
+  }
+  & > * {
+    pointer-events: none;
   }
 `;
 
@@ -100,6 +113,7 @@ export const Button: React.FC<ButtonProps> = ({
   type,
   disabled,
   onClick,
+  ariaLabel,
   children,
 }) => {
   let { isFocusVisible, focusProps } = useFocusRing();
@@ -115,6 +129,7 @@ export const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
       data-tracking-id={trackingId}
+      aria-label={ariaLabel}
     >
       {children}
     </BaseButton>
