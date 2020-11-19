@@ -107,6 +107,14 @@ const BaseButton = styled.button<ButtonProps>`
   & > * {
     pointer-events: none;
   }
+  & > svg {
+    fill: ${(props) =>
+      props.variant === "primary"
+        ? theme.color("Neutral", 0)
+        : props.variant === "strong"
+        ? theme.color("Neutral", 0)
+        : theme.color("Neutral", 9)};
+  }
 `;
 
 export const Button: React.FC<ButtonProps> = ({
