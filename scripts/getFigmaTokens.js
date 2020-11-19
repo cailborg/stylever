@@ -62,10 +62,12 @@ const extractStyleProperties = (layer) => {
       };
 
     case "space":
+      let results = Object.fromEntries(
+        layer.children.map((space) => [[space.name], space.size.x])
+      );
+      let appended = Object.assign(results, { none: 0 });
       return {
-        space: Object.fromEntries(
-          layer.children.map((space) => [[space.name], space.size.x])
-        ),
+        space: appended,
       };
 
     case "sizes":

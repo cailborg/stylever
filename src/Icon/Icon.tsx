@@ -18,15 +18,16 @@ const getIconConfig = (name: keyof typeof data) => {
   }
 };
 
+const StyledSVG = styled.svg`
+    fill: ${props => props.color};
+  `;
+  
 export const Icon: React.FC<IconProps> = ({
   name,
   color = "Neutral",
   label,
   index,
 }) => {
-  const StyledSVG = styled.svg`
-    fill: ${theme.color(color, index)};
-  `;
   const values = getIconConfig(name) as { drawn: string; title: string };
   return (
     <StyledSVG
@@ -35,6 +36,7 @@ export const Icon: React.FC<IconProps> = ({
       height="24"
       viewBox="0 0 24 24"
       role="img"
+      color={theme.color(color, index)}
     >
       <title>{label ? label : values.title}</title>
       <path d={values.drawn} fillRule="evenodd" clipRule="evenodd" />
